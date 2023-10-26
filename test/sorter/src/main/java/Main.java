@@ -5,6 +5,6 @@ public class Main {
         String separator = ":";  // Разделитель
         int batchSize = 100;  // Размер порции данных для сортировки
 
-        Sorter.sortDictionary(inputFile, outputFile, separator, batchSize);
+        DictionarySorter.sortDictionary(inputFile, outputFile, separator, batchSize);
     }
 }

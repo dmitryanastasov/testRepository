@@ -1,3 +1,6 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -8,7 +11,8 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class Sorter {
+public class DictionarySorter {
+    private static final Logger logger = LoggerFactory.getLogger(DictionarySorter.class);
 
     public static void sortDictionary(String inputFileName, String outputFileName, String separator, int batchSize) {
         List<String> terms = new ArrayList<>();
@@ -19,7 +23,7 @@ public class Sorter {
                 terms.add(line);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("An error occurred while reading the file '{}': {}", inputFileName, e.getMessage());
         }
 
         List<String> sortedTerms = new ArrayList<>();
@@ -35,7 +39,7 @@ public class Sorter {
                 writer.write(term + "\n");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("An error occurred while writing to the file '{}': {}", outputFileName, e.getMessage());
         }
     }
 }
